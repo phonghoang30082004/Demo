@@ -1,0 +1,38 @@
+﻿@model Demo.Models.PositionModel
+
+<h1>Thêm mới chức vụ</h1>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+    <!-- Tên chức vụ -->
+    <div>
+        <label asp-for="Name">Tên chức vụ:</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <!-- Danh mục (Department) -->
+    <div>
+        <label for="DepartmentId">Danh Mục</label>
+        <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.Departments" id="DepartmentId">
+            <option value="">--Choose a Department--</option>
+        </select>
+        <span asp-validation-for="DepartmentId" class="text-danger"></span>
+    </div>
+
+    <!-- Nút lưu -->
+    <div>
+        <button type="submit" class="btn btn-primary">Lưu</button>
+    </div>
+</form>
+
+<!-- Link quay lại -->
+<a href="@Url.Action("Index", "Position")">Quay lại</a>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

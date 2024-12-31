@@ -1,0 +1,33 @@
+﻿@model Demo.Models.DepartmentModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm mới phòng ban</title>
+</head>
+<body>
+    <h1>Thêm mới phòng ban</h1>
+
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+        <div>
+            <label asp-for="Name">Tên phòng ban:</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div>
+            <button type="submit">Lưu</button>
+        </div>
+    </form>
+
+    <a href="@Url.Action("Index", "Department")">Quay lại</a>
+
+    @section Scripts {
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    }
+</body>
+</html>

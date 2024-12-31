@@ -1,0 +1,75 @@
+﻿@model StaffModel
+@{
+    ViewData["Title"] = "Create Staff";
+}
+<h4>Thêm Nhân Viên</h4>
+<div class="col-md-9">
+    <form asp-action="Create" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <!-- Tên nhân viên -->
+        <div class="form-group">
+            <label>Tên Nhân Viên</label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+
+        <!-- Số điện thoại -->
+        <div class="form-group">
+            <label>Số Điện Thoại</label>
+            <input asp-for="Phone" class="form-control" />
+        </div>
+
+        <!-- Phòng ban (Department) -->
+        <div class="form-group">
+            <label>Phòng Ban</label>
+            <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.Departments" id="DepartmentId">
+                <option value="">--Chọn Phòng Ban--</option>
+            </select>
+        </div>
+
+        <!-- Chức vụ (Position) -->
+        <div class="form-group">
+            <label>Chức Vụ</label>
+            <select asp-for="PositionId" class="form-control" asp-items="ViewBag.Positions" id="PositionId">
+                <option value="">--Chọn Chức Vụ--</option>
+            </select>
+        </div>
+
+        <!-- Nút lưu -->
+        <div class="form-group">
+            <button class="btn btn-primary">Thêm Nhân Viên</button>
+        </div>
+    </form>
+
+    <a asp-action="Index">Trở về</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // JavaScript để xử lý việc thay đổi phòng ban và cập nhật chức vụ (Position)
+        document.getElementById('DepartmentId').addEventListener('change', function () {
+            var departmentId = this.value;
+
+            // Gửi yêu cầu Ajax để lấy danh sách Position khi chọn Phòng Ban
+            fetch('@Url.Action("GetPositions", "Staff")?departmentId=' + departmentId)
+                .then(response => response.json())
+                .then(data => {
+                    var positionSelect = document.getElementById('PositionId');
+                    positionSelect.innerHTML = '<option value="">--Chọn Chức Vụ--</option>'; // Reset Position dropdown
+
+                    // Cập nhật các chức vụ vào dropdown
+                    data.forEach(function (position) {
+                        var option = document.createElement("option");
+                        option.value = position.id;
+                        option.text = position.name;
+                        positionSelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.log(error));
+        });
+    </script>
+}

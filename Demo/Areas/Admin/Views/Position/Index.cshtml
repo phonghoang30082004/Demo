@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Demo.Models.PositionModel>
+@{
+    ViewData["Title"] = "View Positon";
+}
+
+    <h1>Danh sách chức vụ</h1>
+    <a href="@Url.Action("Create", "Position")">Thêm mới chức vụ</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Tên chức vụ</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var position in Model)
+            {
+                <tr>
+                    <td>@position.Name</td>
+                    <td>@position.Department.Name</td>
+                    <td>
+                    <a href="@Url.Action("Edit", "Position", new { id = position.Id })">Sửa</a> |
+                    <a href="@Url.Action("Delete", "Position", new { id = position.Id })">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

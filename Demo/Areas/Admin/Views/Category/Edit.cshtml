@@ -1,0 +1,17 @@
+﻿@model Demo.Models.CategoryModel
+
+<h2>Edit Category</h2>
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="Name">Category Name</label>
+        <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" />
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="@Url.Action("Index", "Category")" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>

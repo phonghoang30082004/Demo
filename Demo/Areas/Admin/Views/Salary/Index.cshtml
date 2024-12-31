@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Demo.Models.SalaryModel>
+
+@{
+    ViewData["Title"] = "Danh Sách Lương Nhân Viên";
+}
+
+<h4>Lương của nhân viên: @ViewBag.StaffName</h4>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Ngày Thanh Toán</th>
+            <th>Số Tiền</th>
+            <th>Ca Làm</th>
+            <th>Thưởng</th>
+            <th>Trạng Thái</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var salary in Model)
+        {
+            <tr>
+                <td>@salary.Id</td>
+                <td>@salary.PaymentDate.ToString("dd/MM/yyyy")</td>
+                <td>@salary.Amount.ToString("C")</td>
+                <td>@salary.Shiflt</td>
+                <td>@salary.Bonus.ToString("C")</td>
+                <td>@(salary.IsPaid ? "Đã Thanh Toán" : "Chưa Thanh Toán")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index" asp-controller="Staff" class="btn btn-primary">Quay lại danh sách nhân viên</a>

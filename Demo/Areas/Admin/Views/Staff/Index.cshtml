@@ -1,0 +1,39 @@
+﻿@model IEnumerable<StaffModel>
+
+@{
+    ViewData["Title"] = "Staff list";
+}
+<a asp-action="Create" class="btn btn-warning btn-sm" asp-controller="Staff"> Thêm nhân viên</a>
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tên Nhân Viên</th>
+            <th scope="col">Số Điện Thoại</th>
+            <th scope="col">Phòng Ban</th>
+            <th scope="col">Vị Trí</th>
+            <th scope="col">Hành Động</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <th scope="row">@item.Name</th>
+                <th scope="row">@item.Phone</th>
+                <th scope="row">@item.Department.Name</th>
+                <th scope="row">@item.Position.Name</th>
+                <th scope="row">
+                    <a asp-action="Index" class="btn btn-warning btn-sm" asp-controller="Salary" asp-route-Id="@item.Id"> Xem lương</a>
+                    <a asp-action="Edit" class="btn btn-warning btn-sm" asp-controller="Staff" asp-route-Id="@item.Id"> Edit</a>
+                    <a asp-action="Delete" class="btn btn-danger btn-sm" asp-controller="Staff" asp-route-Id="@item.Id"> Delete</a>
+
+                </th>
+
+            </tr>
+        }
+    </tbody>
+</table>

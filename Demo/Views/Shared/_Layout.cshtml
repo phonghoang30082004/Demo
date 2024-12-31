@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+<head>
+    
+    <meta charset="utf-8">
+
+    <!-- Site Metas -->
+    <title>HomeFoot Restaurant - Responsive HTML5 Template</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="~/images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="~/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/custom.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    @RenderSection("Styles", required: false)
+
+</head>
+
+<body>
+    <!-- Start header -->
+    <header class="top-navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" asp-action="Index" asp-controller="Home">
+                    <img src="~/images/logohomefood.png" alt="" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbars-rs-food">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active"><a class="nav-link" asp-controller="Home" asp-action="Index">Trang Chủ</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Menu" asp-action="Index">Thực Đơn</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="About" asp-action="Index">Về chúng tôi</a></li>
+                        <li class="nav-item">
+                            <!-- Biểu tượng giỏ hàng -->
+                            <a class="nav-link" asp-action="Index" asp-controller="Cart">
+                                <i class="fas fa-shopping-cart" ></i>
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Đăng nhập</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                                <a class="dropdown-item" asp-action="Edit_Profile" asp-controller="User">Chỉnh sửa thông tin</a>
+                                <a class="dropdown-item" asp-action="Order_User" asp-controller="User">Lịch sử đặt bàn</a>
+                                <a class="dropdown-item" asp-action="Index" asp-controller="User">Danh sách đặt bàn</a>
+                                <a class="dropdown-item" href="blog-details.html">Quản lý thông báo</a>
+                                <a class="dropdown-item" href="blog-details.html">Đăng xuất</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- End header -->
+
+        @RenderBody() <!-- Nội dung của view sẽ được render ở đây -->
+    <!-- Start Footer -->
+    <footer class="footer-area bg-f">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <h3>About Us</h3>
+                    <p>
+                        Tại HomeFood, chúng tôi mang đến một trải nghiệm ẩm thực đặc biệt với những món ăn ngon, được chế biến từ nguyên liệu tươi ngon và chất lượng. Với không gian ấm cúng và dịch vụ tận tâm, HomeFood là nơi lý tưởng để bạn thưởng thức bữa ăn cùng gia đình và bạn bè. Chúng tôi cam kết mang đến những giây phút thư giãn và hài lòng cho mọi khách hàng.
+                    </p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3>Opening hours</h3>
+                    <p><span class="text-color">Thứ hai: </span> 9:Am - 10PM</p>
+                    <p><span class="text-color">Thứ ba-Thứ tư :</span> 9:Am - 10PM</p>
+                    <p><span class="text-color">Thứ năm-Thứ sáu :</span> 9:Am - 10PM</p>
+                    <p><span class="text-color">Thứ bảy-Chủ Nhật :</span> 8:AM - 8PM</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3>Thông Tin Liên Hệ</h3>
+                    <p class="lead">Số 1 Hoa Cúc, Phú Nhuận , Tp.Hồ Chí Minh</p>
+                    <p class="lead"><a href="#">+0123 456 789</a></p>
+                    <p><a href="#"> phonghoang30082004@gmail.com</a></p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3>Theo dõi chúng tôi</h3>
+                    <div class="subscribe_form">
+                        <form class="subscribe_form">
+                            <input name="EMAIL" id="subs-email" class="form_input" placeholder="Email Address..." type="email">
+                            <button type="submit" class="submit">Đăng ký để theo dõi</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                    <ul class="list-inline f-social">
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+
+    </footer>
+    <!-- End Footer -->
+
+    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+    <!-- ALL JS FILES -->
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="/js/jquery.superslides.min.js"></script>
+    <script src="~js/images-loded.min.js"></script>
+    <script src="~/js/isotope.min.js"></script>
+    <script src="~/js/baguetteBox.min.js"></script>
+    <script src="~/js/form-validator.min.js"></script>
+    <script src="~/js/contact-form-script.js"></script>
+    <script src="~/js/custom.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Demo.Models.ViewModel.AttendanceViewModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Staff Name</th>
+            <th>Date</th>
+            <th>Present</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.StaffName</td>
+                <td>@item.AttendanceDate.ToShortDateString()</td>
+                <td>@(item.IsPresent ? "Yes" : "No")</td>
+            </tr>
+        }
+    </tbody>
+</table>

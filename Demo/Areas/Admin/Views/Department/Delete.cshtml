@@ -1,0 +1,26 @@
+﻿@model Demo.Models.DepartmentModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác nhận xóa phòng ban</title>
+</head>
+<body>
+    <h1>Xác nhận xóa phòng ban</h1>
+
+    <p>Bạn có chắc chắn muốn xóa phòng ban <strong>@Model.Name</strong> không?</p>
+
+    <form asp-action="DeleteConfirmed" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+        <input type="hidden" asp-for="@Model.Id" />
+        <div>
+
+            <button type="submit">Xóa</button>
+
+        </div>
+        <a href="@Url.Action("Index", "Department")">Hủy</a>
+    </form>
+</body>
+</html>

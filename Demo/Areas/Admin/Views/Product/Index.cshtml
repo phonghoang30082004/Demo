@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ProductModel>
+
+@{
+    ViewData["Title"] = "Product list";
+}
+<a asp-action="Create" class="btn btn-warning btn-sm" asp-controller="Product" > Thêm sản phẩm</a>
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tên sản phẩm</th>
+            <th scope="col">Hình Ảnh</th>
+            <th scope="col">Mô tả</th>
+            <th scope="col">Đơn Giá</th>
+            <th scope="col">Danh Mục</th>
+            <th scope="col">Hành Động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <th scope="row">@item.Name</th>
+                <th scope="row"><img src="~/media/products/@item.Image" width="100" height="80" /></th>
+                <th scope="row">@Html.Raw(item.Description)</th>
+                <th scope="row">@item.Price.ToString("C0", new System.Globalization.CultureInfo("vi-VN"))</th>
+                <th scope="row">@item.Category.Name</th>
+                <th scope="row">
+                    <a asp-action="Edit"  class="btn btn-warning btn-sm" asp-controller="Product" asp-route-Id="@item.Id"> Edit</a>
+                    <a asp-action="Delete" class="btn btn-danger btn-sm" asp-controller="Product" asp-route-Id="@item.Id"> Delete</a>
+
+                </th>
+
+            </tr>
+        }
+    </tbody>
+</table>
